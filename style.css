@@ -863,7 +863,9 @@ main.table {
 
 
 .title_img:hover {
+  transform-origin: left;
   transform: scale(3);
+  z-index: 1;
 }
 
 .table__header {
@@ -873,6 +875,7 @@ main.table {
   padding: .8rem 1rem;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 
@@ -911,7 +914,43 @@ main.table {
   outline: none;
 }
 
+.table__header .series-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 1rem;
+}
+
+.table__header .series-filter label {
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.table__header .series-filter select {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.table__header .series-filter select:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+.table__header .series-filter select:focus {
+  outline: none;
+  border-color: #F89915;
+  box-shadow: 0 0 0 3px rgba(248, 153, 21, 0.1);
+}
+
 .table__body {
+
   width: 95%;
   max-height: calc(89% - 1.6rem);
   background-color: #fffb;
@@ -1015,9 +1054,11 @@ thead th.asc span.icon-arrow {
   transform: rotate(180deg);
 }
 
-thead th.active,
+thead th.active {
+  color: #ffffff;
+}
 tbody td.active {
-  color: #fff;
+  color: #000000;
 }
 
 .random__item button {
@@ -1025,7 +1066,7 @@ tbody td.active {
   border: none;
   border-radius: 2rem;
   background-color: #F89915;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
   transition: transform .2s ease, background-color .2s ease;

@@ -41,7 +41,52 @@ function searchTable() {
     });
 }
 
-// 2. Sorting | Ordering data of HTML table
+// 1.5 Series Filter Dropdown
+const seriesDropdown = document.querySelector('#seriesDropdown');
+
+if (seriesDropdown) {
+    // Populate series filter options
+    const uniqueSeries = new Set();
+    table_rows.forEach(row => {
+        const seriesCell = row.querySelectorAll('td')[1];
+        if (seriesCell) {
+            const series = seriesCell.textContent.trim();
+            if (series) uniqueSeries.add(series);
+        }
+    });
+
+    // Sort and add to dropdown
+    Array.from(uniqueSeries).sort().forEach(series => {
+        const option = document.createElement('option');
+        option.value = series;
+        option.textContent = series;
+        seriesDropdown.appendChild(option);
+    });
+
+    // Handle series filter change
+    seriesDropdown.addEventListener('change', filterBySeries);
+}
+
+function filterBySeries() {
+    const selectedSeries = seriesDropdown.value;
+    let visibleCount = 0;
+
+    table_rows.forEach((row, i) => {
+        const seriesCell = row.querySelectorAll('td')[1];
+        const series = seriesCell ? seriesCell.textContent.trim() : '';
+        const matchesSeries = !selectedSeries || series === selectedSeries;
+        
+        row.classList.toggle('hide', !matchesSeries);
+        if (matchesSeries) {
+            row.style.setProperty('--delay', (visibleCount++) / 25 + 's');
+        }
+    });
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+    });
+}
+
 
 table_headings.forEach((head, i) => {
     let sort_asc = true;
@@ -152,3 +197,16 @@ function pickRandomItem(table) {
 
     // alert(`Random item selected:\nCustomer: ${customer}\nLocation: ${location}\nOrder Date: ${orderDate}`);
 }
+
+// Initialize default sort - sort date column (column 4) in ascending order (oldest first)
+document.addEventListener('DOMContentLoaded', () => {
+    const dateHeader = table_headings[4];
+    if (dateHeader) {
+        dateHeader.classList.add('active');
+        document.querySelectorAll('tbody tr').forEach((row) => {
+            const cell = row.querySelectorAll('td')[4];
+            if (cell) cell.classList.add('active');
+        });
+        sortTable(4, true); // true = ascending order (oldest first)
+    }
+});
