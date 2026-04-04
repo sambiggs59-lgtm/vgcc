@@ -133,11 +133,16 @@ function pickRandomItem(table) {
         return pickRandomItem(table);
     }
 
-    visible_rows.forEach(row => row.classList.remove('selected-row'));
+    // Clear highlight from all rows
+    visible_rows.forEach(row => {
+        row.classList.remove('selected-row');
+        row.style.backgroundColor = '';
+    });
 
     const random_row = available_rows[Math.floor(Math.random() * available_rows.length)];
     previousRandomRow = random_row;
     random_row.classList.add('selected-row');
+    random_row.style.backgroundColor = 'rgba(255, 111, 0, 0.12)';
     random_row.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     const cells = random_row.querySelectorAll('td');
