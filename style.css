@@ -961,6 +961,11 @@ td {
   text-align: left;
 }
 
+table a {
+  color: inherit;
+  text-decoration: none;
+}
+
 thead th {
   position: sticky;
   top: 0;
