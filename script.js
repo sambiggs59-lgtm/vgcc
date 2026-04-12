@@ -22,19 +22,47 @@ Code written by:
 
 const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
-    table_headings = document.querySelectorAll('thead th');
+    table_headings = document.querySelectorAll('thead th'),
+    seriesDropdown = document.querySelector('#seriesDropdown'),
+    audioCheckbox = document.querySelector('#audioAvailableCheckbox'),
+    videoCheckbox = document.querySelector('#videoAvailableCheckbox');
 
 // 1. Searching for specific data of HTML table
-search.addEventListener('input', searchTable);
+if (search) search.addEventListener('input', filterTable);
 
-function searchTable() {
-    table_rows.forEach((row, i) => {
-        let table_data = row.textContent.toLowerCase(),
-            search_data = search.value.toLowerCase();
+if (audioCheckbox) audioCheckbox.addEventListener('change', filterTable);
 
-        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
-        row.style.setProperty('--delay', i / 25 + 's');
-    })
+if (videoCheckbox) videoCheckbox.addEventListener('change', filterTable);
+
+function filterTable() {
+    const search_data = search ? search.value.toLowerCase() : '';
+    const selectedSeries = seriesDropdown ? seriesDropdown.value : '';
+    const requireAudio = audioCheckbox ? audioCheckbox.checked : false;
+    const requireVideo = videoCheckbox ? videoCheckbox.checked : false;
+    let visibleCount = 0;
+
+    table_rows.forEach((row) => {
+        const rowText = row.textContent.toLowerCase();
+        const seriesCell = row.querySelectorAll('td')[1];
+        const series = seriesCell ? seriesCell.textContent.trim() : '';
+        const audioCell = row.querySelectorAll('td')[2];
+        const videoCell = row.querySelectorAll('td')[3];
+        const audioImg = audioCell ? audioCell.querySelector('img') : null;
+        const videoImg = videoCell ? videoCell.querySelector('img') : null;
+        const hasAudio = audioImg ? /audio available/i.test(audioImg.alt || '') : false;
+        const hasVideo = videoImg ? /video available/i.test(videoImg.alt || '') : false;
+
+        const matchesSearch = !search_data || rowText.indexOf(search_data) !== -1;
+        const matchesSeries = !selectedSeries || series === selectedSeries;
+        const matchesAudio = !requireAudio || hasAudio;
+        const matchesVideo = !requireVideo || hasVideo;
+        const shouldShow = matchesSearch && matchesSeries && matchesAudio && matchesVideo;
+
+        row.classList.toggle('hide', !shouldShow);
+        if (shouldShow) {
+            row.style.setProperty('--delay', (visibleCount++) / 25 + 's');
+        }
+    });
 
     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
         visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
@@ -42,7 +70,6 @@ function searchTable() {
 }
 
 // 1.5 Series Filter Dropdown
-const seriesDropdown = document.querySelector('#seriesDropdown');
 
 if (seriesDropdown) {
     // Populate series filter options
@@ -64,27 +91,7 @@ if (seriesDropdown) {
     });
 
     // Handle series filter change
-    seriesDropdown.addEventListener('change', filterBySeries);
-}
-
-function filterBySeries() {
-    const selectedSeries = seriesDropdown.value;
-    let visibleCount = 0;
-
-    table_rows.forEach((row, i) => {
-        const seriesCell = row.querySelectorAll('td')[1];
-        const series = seriesCell ? seriesCell.textContent.trim() : '';
-        const matchesSeries = !selectedSeries || series === selectedSeries;
-        
-        row.classList.toggle('hide', !matchesSeries);
-        if (matchesSeries) {
-            row.style.setProperty('--delay', (visibleCount++) / 25 + 's');
-        }
-    });
-
-    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
-        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
-    });
+    seriesDropdown.addEventListener('change', filterTable);
 }
 
 
