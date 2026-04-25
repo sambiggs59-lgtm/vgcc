@@ -123,7 +123,7 @@ body {
   background-color: #FFFFFF;
   font-family: Lato, sans-serif;
   min-height: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 75px;
 }
 
 @media screen and (max-width: 600px) {
@@ -777,6 +777,34 @@ body {
   }
 }
 
+.tnotgResults {
+  display: grid;
+  width: 1070px;
+  height: auto;
+  grid-template-columns: 1070px;
+  grid-template-rows: 50px 50px 90vh;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+  justify-items: center;
+}
+
+#tnotg {
+  max-width: 100%;
+}
+
+.tnotgScore {
+  display: grid;
+  width: 780px;
+  grid-template-columns: 780px;
+  grid-template-rows: 50px 158px 50px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 25px;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -1058,6 +1086,7 @@ thead th.asc span.icon-arrow {
 thead th.active {
   color: #ffffff;
 }
+
 tbody td.active {
   color: #000000;
 }
@@ -1085,4 +1114,5 @@ tbody td.active {
 .hide {
   display: none;
 }
+
 /* Patreon content table styles end */
