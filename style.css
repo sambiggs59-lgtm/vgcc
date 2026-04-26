@@ -793,6 +793,16 @@ body {
   max-width: 100%;
 }
 
+@media screen and (max-width: 600px) {
+  .tnotgResults {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    max-width: 95%;
+    height: auto;
+  }
+}
+
 .tnotgScore {
   display: grid;
   width: 780px;
@@ -803,6 +813,16 @@ body {
   align-items: center;
   justify-items: center;
   margin-top: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .tnotgScore {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    max-width: 95%;
+    height: auto;
+  }
 }
 
 footer {
@@ -1113,6 +1133,24 @@ tbody td.active {
 
 .hide {
   display: none;
+}
+
+@media screen and (max-width: 600px) {
+  main.table {
+    width: 95vw;
+    height: auto;
+  }
+
+  .table__header .input-group {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .table__header .series-filter {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* Patreon content table styles end */

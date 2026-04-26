@@ -162,7 +162,7 @@ function parseDateValue(value) {
 }
 
 
-
+//random button functionality
 const random_btn = document.querySelector('#randomItem');
 const customers_table = document.querySelector('#customers_table');
 let previousRandomRow = null;
