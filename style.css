@@ -191,7 +191,7 @@ body {
   }
 }
 
-.table {
+.excel_table {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,7 +201,7 @@ body {
   max-height: 90vh;
 }
 
-.table.total {
+.excel_table.total {
   min-height: 390px;
   max-width: 90%;
   display: flex;
@@ -211,7 +211,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .table {
+  .excel_table {
     max-height: 85vh;
   }
 }
@@ -540,6 +540,11 @@ body {
   max-width: 100%;
   align-items: center;
   text-align: center;
+}
+
+#motyimg {
+  max-width: 95vw;
+  max-height: 90vh;
 }
 
 #motytext {
@@ -1154,3 +1159,5 @@ tbody td.active {
 }
 
 /* Patreon content table styles end */
+
+/* background-image: linear-gradient(45deg, #f47820, #feb823); */
