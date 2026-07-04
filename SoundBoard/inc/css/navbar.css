@@ -1,0 +1,18 @@
+.navbar {
+    background-color: #F89915;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.input-sm {
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}

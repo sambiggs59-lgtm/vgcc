@@ -1,0 +1,25 @@
+{
+    "files": [
+        {
+            "name": "But first how you doing folks?",
+            "mp3": "sounds/But First how you doing folks.mp3"
+        },
+        {
+            "name": "JJM Scream",
+            "mp3": "sounds/JJM Scream.mp3"
+        },
+        {
+            "name": "God Rest Them - Scullion",
+            "mp3": "sounds/god rest them CS.mp3"
+        },
+        {
+            "name": "Say Goodbye Chris",
+            "mp3": "sounds/say goodbye chris.mp3"
+        },
+        {
+            "name": "Snooker",
+            "mp3": "sounds/Snooker.mp3"
+        }
+        
+    ]
+}
