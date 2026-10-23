@@ -37,7 +37,7 @@
 .topnavmobile a:hover {
   background-color: #DDD;
   color: rgb(255, 255, 255);
-  height: 48px;
+  
 }
 
 .topnavmobile a.activemobile {

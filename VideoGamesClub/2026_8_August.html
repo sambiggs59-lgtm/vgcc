@@ -72,24 +72,38 @@
     </div>
 
     <div class="mobiletitle">
-        <a>Video Games Club - July 2026</a>
+        <a>Video Games Club - August 2026</a>
     </div>
 
     <div class="desktoptitle">
-        <a>Video Games Club - July 2026</a>
+        <a>Video Games Club - August 2026</a>
     </div>
 
-    <h2>Donkey Kong Country 2</h2>
+    <img class="reviewImg" src="images/2026August.jpeg">
 
-    <img class="reviewImg" src="images/2026July.jpeg">
-    
+    <div class="submitter">
+    <p id="submitter">Submitted by Ryan Easby</p>
+    </div>
+
+    <div class="reviews">
+    <h2 class="lined-text">Reviews</h2>
+    <div id="table-container"></div>
+  </div>
+
+  <div class="picks">
+    <h2 class="lined-text">Picks</h2>
+    <div id="picks-table-container"></div>
+  </div>
+
     <footer>
         <div class="footer">
             <a href="https://www.patreon.com/cw/VideoGamesChronicle" target="_blank">PATREON.COM/VIDEOGAMESCHRONICLE</a>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
+    <script src="VideoGamesClub.js" data-source="2026_8_August_Reviews.json"></script>
+    <script src="VideoGamesClub.js" data-source="2026_8_August_Picks.json" data-target="picks-table-container"></script>
 </body>
 
 </html>

@@ -34,7 +34,100 @@
 .reviewImg {
     width: 800px;
     max-width: 100%;
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
+}
+
+.submitter {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    background-color: #F89915;
+    border-radius: 10px;
+    width: 800px;
+    height: 30px;
+    max-width: 100%;
+}
+
+#submitter {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.lined-text {
+  display: flex;       /* Aligns the lines and text in a single row */
+  align-items: center; /* Centers the lines vertically relative to the text */
+  text-align: center;  /* Fallback alignment */
+  margin: 10px 0;        /* Optional: Adds vertical spacing around the lined text */
+  color: #6c757d;
+}
+
+/* This creates and styles the lines on both sides */
+.lined-text::before,
+.lined-text::after {
+  content: "";         /* Required for pseudo-elements to appear */
+  flex: 1;             /* Tells the lines to stretch and fill the empty space */
+  border-bottom: 2px solid #6c757d; /* The thickness, style, and colour of your line */
+}
+
+/* Adds a bit of spacing between the lines and the text */
+.lined-text::before {
+  margin-right: 15px;
+}
+
+.lined-text::after {
+  margin-left: 15px;
+}
+
+#table-container,
+#picks-table-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+#table-container table,
+#picks-table-container table {
+    width: 1200px;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+#table-container th,
+#table-container td,
+#picks-table-container th,
+#picks-table-container td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+#table-container th,
+#picks-table-container th {
+    background-color: #F89915;
+    color: #FFFFFF;
+}
+
+
+#table-container::-webkit-scrollbar,
+#picks-table-container::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+#table-container::-webkit-scrollbar-thumb,
+#picks-table-container::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+#table-container:hover::-webkit-scrollbar-thumb,
+#picks-table-container:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
 }
 
 @media screen and (max-width: 600px) {
@@ -42,5 +135,21 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+    }
+
+    .reviews {
+      width: 600px;
+      max-width: 95vw;
+    }
+
+    .picks {
+      width: 600px;
+      max-width: 95vw;
+    }
+
+    #table-container,
+    #picks-table-container {
+      width: 600px;
+      max-width: 100%;
     }
 }
