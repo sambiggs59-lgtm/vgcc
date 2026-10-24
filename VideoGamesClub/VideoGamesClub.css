@@ -45,14 +45,19 @@
     background-color: #F89915;
     border-radius: 10px;
     width: 800px;
-    height: 30px;
     max-width: 100%;
+    min-height: 30px;
+    height: auto;
+    padding: 0;
 }
 
 #submitter {
     font-size: 20px;
     font-weight: bold;
     color: #FFFFFF;
+    overflow-wrap: anywhere;
+    text-align: center;
+    margin: 0;
 }
 
 .lined-text {
