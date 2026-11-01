@@ -205,12 +205,21 @@ function setActiveColumn(index) {
 function loadPatreonData() {
   if (!customers_table || !tbody) return;
 
-  fetch('patreoncontent.json')
-    .then((response) => {
-      if (!response.ok) throw new Error('Failed to load JSON data');
+  const dataFiles = [
+    'patreonContent_cvg.json',
+    'patreonContent_offTopic.json',
+    'patreonContent_we3.json',
+    'patreonContent_acceptableInThe90s.json'
+  ];
+
+  Promise.all(dataFiles.map((file) =>
+    fetch(file).then((response) => {
+      if (!response.ok) throw new Error(`Failed to load ${file}`);
       return response.json();
     })
-    .then((data) => {
+  ))
+    .then((dataSets) => {
+      const data = dataSets.flat();
       buildTableRows(data);
       populateSeriesDropdown();
       filterTable();
@@ -221,7 +230,7 @@ function loadPatreonData() {
         sortTable(4, true);
       }
     })
-    .catch((error) => console.error('Error loading Patreon JSON:', error));
+    .catch((error) => console.error('Error loading Patreon JSON files:', error));
 }
 
 if (customers_table && tbody) {

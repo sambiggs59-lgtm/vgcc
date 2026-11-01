@@ -1,3 +1,13 @@
+.description {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  max-width: 95%;
+}
+
+.description p {
+  margin-top: 5px;
+}
 /*
 Responsive HTML Table With Pure CSS - Web Design/UI Design
 
