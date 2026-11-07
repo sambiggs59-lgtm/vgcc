@@ -238,7 +238,7 @@ thead th:hover {
   color: #ffffff;
 }
 
-thead th.active span.icon-arrow {
+thead th.activePatreon span.icon-arrow {
   background-color: #fce0c8;
   color: #000000;
 }
@@ -247,11 +247,11 @@ thead th.asc span.icon-arrow {
   transform: rotate(180deg);
 }
 
-thead th.active {
+thead th.activePatreon {
   color: #ffffff;
 }
 
-tbody td.active {
+tbody td.activePatreon {
   color: #000000;
 }
 

@@ -41,9 +41,7 @@ function filterTable() {
     }
   });
 
-  document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
-    visible_row.style.backgroundColor = (i % 2 === 0) ? 'transparent' : '#0000000b';
-  });
+
 }
 
 function populateSeriesDropdown() {
@@ -195,10 +193,10 @@ function pickRandomItem(table) {
 }
 
 function setActiveColumn(index) {
-  document.querySelectorAll('td').forEach((td) => td.classList.remove('active'));
+  document.querySelectorAll('td').forEach((td) => td.classList.remove('activePatreon'));
   getTableRows().forEach((row) => {
     const cell = row.querySelectorAll('td')[index];
-    if (cell) cell.classList.add('active');
+    if (cell) cell.classList.add('activePatreon');
   });
 }
 
@@ -225,7 +223,7 @@ function loadPatreonData() {
       filterTable();
       const dateHeader = table_headings[4];
       if (dateHeader) {
-        dateHeader.classList.add('active');
+        dateHeader.classList.add('activePatreon');
         setActiveColumn(4);
         sortTable(4, true);
       }
@@ -247,8 +245,8 @@ if (customers_table && tbody) {
     if (i !== 4) return;
 
     head.onclick = () => {
-      table_headings.forEach((heading) => heading.classList.remove('active'));
-      head.classList.add('active');
+      table_headings.forEach((heading) => heading.classList.remove('activePatreon'));
+      head.classList.add('activePatreon');
       setActiveColumn(i);
       head.classList.toggle('asc', sort_asc);
       sort_asc = head.classList.contains('asc') ? false : true;
